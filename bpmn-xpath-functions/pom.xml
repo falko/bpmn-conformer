@@ -7,7 +7,7 @@
   <description>Implentation of the XPath functions defined in the BPMN specification</description>
 
   <properties>
-    <camunda.version>7.3.0-alpha3</camunda.version>
+    <camunda.version>7.3.0-ee</camunda.version>
     <maven.compiler.source>1.6</maven.compiler.source>
     <maven.compiler.target>1.6</maven.compiler.target>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -40,4 +40,17 @@
       <scope>provided</scope>
     </dependency>
   </dependencies>
+  
+  <build>
+    <finalName>${project.artifactId}</finalName>
+  </build>
+
+	<repositories>
+		<repository>
+			<id>camunda-bpm-nexus</id>
+			<name>camunda-bpm-nexus</name>
+			<url>https://app.camunda.com/nexus/content/repositories/camunda-bpm-ee</url>
+		</repository>
+	</repositories>
+
 </project>

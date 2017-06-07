@@ -15,7 +15,7 @@ public class GetDataObjectXPathFunction implements XPathFunction {
       String variableName = (String) args.get(0);
       return Context.getBpmnExecutionContext().getExecution().getVariable(variableName);
     } else {
-      throw new RuntimeException("The XPath function getDataObject need one variable name as an input, but the number of inputs was " + args.size() + ".");
+      throw new RuntimeException("The XPath function getDataObject needs one variable name as an input, but the number of inputs was " + args.size() + ".");
     }
   }
 

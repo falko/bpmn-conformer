@@ -8,11 +8,12 @@
     <property name="expressionManager">
         <bean class="org.camunda.bpm.engine.test.mock.MockExpressionManager"/>
     </property>
-		<property name="processEnginePlugins">
-			<list>
-				<bean class="org.camunda.spin.plugin.impl.SpinProcessEnginePlugin" />
-			</list>
-		</property>
+    <property name="processEnginePlugins">
+      <list>
+        <bean class="org.camunda.spin.plugin.impl.SpinProcessEnginePlugin" />
+        <bean class="org.camunda.bpm.engine.impl.cfg.BpmnConformerProcessEnginePlugin" />
+      </list>
+    </property>
   </bean>
 
 </beans>

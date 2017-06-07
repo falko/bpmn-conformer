@@ -1,0 +1,12 @@
+<module xmlns="urn:jboss:module:1.0" name="org.camunda.bpm.camunda-engine-plugin-bpmn-conformer">
+  <resources>
+    <resource-root path="bpmn-xpath-functions.jar" />
+  </resources>
+
+  <dependencies>
+
+    <module name="javax.api" />
+    <module name="org.camunda.bpm.camunda-engine" />
+
+  </dependencies>
+</module>

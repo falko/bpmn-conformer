@@ -1,0 +1,615 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<semantic:definitions
+    xmlns:semantic="http://www.omg.org/spec/BPMN/20100524/MODEL"
+    xmlns:trisobpmn="http://www.trisotech.com/2014/triso/bpmn"
+    xmlns:triso="http://www.trisotech.com/2015/triso/modeling"
+    xmlns:dc="http://www.omg.org/spec/DD/20100524/DC"
+    xmlns:trisofeed="http://trisotech.com/feed"
+    xmlns:bpsim="http://www.bpsim.org/schemas/1.0"
+    xmlns:di="http://www.omg.org/spec/DD/20100524/DI"
+    xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:color="http://www.omg.org/spec/BPMN/non-normative/color/1.0"
+    xmlns:w4graph="http://www.w4.eu/spec/BPMN/20110930/GRAPH"
+    xmlns:xs="http://xsdTypes.org/"
+    xmlns:w4="http://www.w4.eu/spec/BPMN/20110701/MODEL"
+    xmlns:camunda="http://activiti.org/bpmn"
+    xmlns:signavio="http://www.signavio.com"
+    xmlns:adonis="http://www.boc-group.com"
+    xmlns:rss="http://purl.org/rss/2.0/"
+    xmlns="http://www.omg.org/bpmn20" id="sid-bdb880ac-c464-4e5c-aa56-569d709436e0"         exporter="ADONIS" exporterVersion="6.1.4.1" trisobpmn:logoChoice="Default" name="sid-78cf0368-c97e-4dea-885f-0e535c20d6c7" targetNamespace="http://www.omg.org/bpmn20" expressionLanguage="http://www.w3.org/1999/XPath" typeLanguage="http://www.w3.org/2001/XMLSchema" xsi:schemaLocation="http://www.omg.org/spec/BPMN/20100524/MODEL http://www.omg.org/spec/BPMN/2.0/20100501/BPMN20.xsd">
+<!--     <semantic:import importType="http://www.w3.org/2001/XMLSchema" location="xsdTypes.xsd" namespace="http://xsdTypes.org/"/> -->
+    <semantic:message name="invoice-received-C.1.0" id="sid-328811a0-7f72-468f-92de-6ab19e353312"/>
+    <semantic:resource name="Team Assistant" id="Bpmn_Resource_6vVHsLHzEeS1nbPdxxCzlg"/>
+    <semantic:resource name="Approver" id="Bpmn_Resource_8nPrkLHzEeS1nbPdxxCzlg"/>
+    <semantic:resource name="Accountant" id="Bpmn_Resource_-IajYLHzEeS1nbPdxxCzlg"/>
+    <semantic:itemDefinition isCollection="false" itemKind="Information" structureRef="xs:tString" id="xsdString"/>
+    <semantic:itemDefinition isCollection="false" itemKind="Information" structureRef="xs:tBool" id="xsdBool"/>
+    <semantic:process isClosed="true" isExecutable="true" name="Invoice Handling (OMG BPMN MIWG Demo)" w4:version="1.0" id="handle-invoice">
+        <semantic:extensionElements>
+            <signavio:signavioDiagramMetaData metaValue="ee3e32b48d9c4411bbe5a5365ee6a00e" metaKey="revisionid"/>
+            <w4graph:graphStyle>
+                <w4graph:basic foreground="0,0,0" collapsed="false" borderColor="100,100,100" background="255,255,255" autoResize="false"/>
+            </w4graph:graphStyle>
+            <adonis:modelattributes/>
+        </semantic:extensionElements>
+        <semantic:dataObject isCollection="false" itemSubjectRef="xsdBool" name="approved" id="sid-1937ea46-7a9a-457f-b610-d1cfaea752b2"/>
+        <semantic:dataObject isCollection="false" itemSubjectRef="xsdString" name="clarified" id="sid-1fae61e0-2385-457b-9760-c84ef8cbf310"/>
+        <semantic:userTask id="approveInvoice" name="Approve Invoice" startQuantity="1" completionQuantity="1" isForCompensation="false" implementation="##unspecified" camunda:formKey="app:approveInvoice.jsf" camunda:assignee="${approver}">
+            <semantic:extensionElements>
+                <signavio:signavioMetaData metaValue="#ffffcc" metaKey="bgcolor"/>
+                <signavio:signavioMetaData metaKey="meta-informed"/>
+                <signavio:signavioMetaData metaKey="meta-fhrtdurch"/>
+                <signavio:signavioMetaData metaKey="meta-prioritt"/>
+                <signavio:signavioMetaData metaKey="meta-iks"/>
+                <signavio:signavioMetaData metaKey="risklevel2"/>
+                <signavio:signavioMetaData metaKey="meta-wirdkonsultiert"/>
+                <signavio:signavioMetaData metaKey="meta-wirdinformiert"/>
+                <signavio:signavioMetaData metaKey="meta-responsible"/>
+                <signavio:signavioMetaData metaKey="meta-consulted"/>
+                <signavio:signavioMetaData metaKey="meta-erteiltfreigabe"/>
+                <signavio:signavioMetaData metaKey="externedokumente2"/>
+                <signavio:signavioMetaData metaKey="saprelevant"/>
+                <signavio:signavioMetaData metaKey="itsmpriority"/>
+                <signavio:signavioMetaData metaKey="meta-accountable"/>
+                <signavio:signavioMetaData metaKey="riskandcontrol"/>
+                <signavio:signavioMetaData metaKey="saptransaktionsnummer"/>
+                <signavio:signavioMetaData metaKey="externedokumente"/>
+                <signavio:signavioMetaData metaKey="itsysteme"/>
+                <w4graph:graphStyle>
+                    <w4graph:basic foreground="0,0,0" collapsed="false" borderColor="100,100,100" background="194,215,235" autoResize="false"/>
+                </w4graph:graphStyle>
+                <adonis:instance/>
+            </semantic:extensionElements>
+            <semantic:incoming>reviewSuccessful</semantic:incoming>
+            <semantic:incoming>sequenceFlow_178</semantic:incoming>
+            <semantic:outgoing>sequenceFlow_180</semantic:outgoing>
+            <semantic:ioSpecification id="sid-57bd0049-658b-4377-a9b3-c3dbb3943969">
+                <semantic:dataOutput isCollection="false" itemSubjectRef="xsdBool" name="approved" id="Bpmn_DataOutput_Y6S1ALH1EeSuDf0W70XLGw"/>
+                <semantic:inputSet name="default input set" id="Bpmn_InputSet_Y6GAsrH1EeSuDf0W70XLGw">
+                    <semantic:outputSetRefs>Bpmn_OutputSet_Y6GAsbH1EeSuDf0W70XLGw</semantic:outputSetRefs>
+                </semantic:inputSet>
+                <semantic:outputSet name="default output set" id="Bpmn_OutputSet_Y6GAsbH1EeSuDf0W70XLGw">
+                    <semantic:dataOutputRefs>Bpmn_DataOutput_Y6S1ALH1EeSuDf0W70XLGw</semantic:dataOutputRefs>
+                    <semantic:inputSetRefs>Bpmn_InputSet_Y6GAsrH1EeSuDf0W70XLGw</semantic:inputSetRefs>
+                </semantic:outputSet>
+            </semantic:ioSpecification>
+            <semantic:dataOutputAssociation id="Bpmn_DataOutputAssociation_Y55MYrH1EeSuDf0W70XLGw">
+                <semantic:sourceRef>Bpmn_DataOutput_Y6S1ALH1EeSuDf0W70XLGw</semantic:sourceRef>
+                <semantic:targetRef>Bpmn_DataObjectReference_YGA4YLH1EeSuDf0W70XLGw</semantic:targetRef>
+            </semantic:dataOutputAssociation>
+            <semantic:potentialOwner id="sid-939d4c53-8a76-495c-9081-c77af242684e">
+                <semantic:resourceRef>Bpmn_Resource_8nPrkLHzEeS1nbPdxxCzlg</semantic:resourceRef>
+            </semantic:potentialOwner>
+        </semantic:userTask>
+        <semantic:sequenceFlow id="reviewSuccessful" name="yes" sourceRef="reviewSuccessful_gw" targetRef="approveInvoice">
+            <semantic:extensionElements>
+                <signavio:signavioMetaData metaKey="schnittstelleab"/>
+                <w4graph:graphStyle>
+                    <w4graph:basic foreground="0,0,0" collapsed="false" borderColor="100,100,100" background="255,255,255" autoResize="false"/>
+                    <w4graph:line routerType="Rectilinear" closestRoute="false" avoidObstacleRoute="false" automaticRoute="true"/>
+                </w4graph:graphStyle>
+                <adonis:connector/>
+            </semantic:extensionElements>
+            <semantic:conditionExpression xsi:type="semantic:tFormalExpression" id="reviewSuccessful_condExpr">bpmn:getDataObject('clarified') = 'yes'</semantic:conditionExpression>
+        </semantic:sequenceFlow>
+        <semantic:sequenceFlow id="sequenceFlow_180" sourceRef="approveInvoice" targetRef="invoice_approved">
+            <semantic:extensionElements>
+                <signavio:signavioMetaData metaKey="schnittstelleab"/>
+                <w4graph:graphStyle>
+                    <w4graph:basic foreground="0,0,0" collapsed="false" borderColor="100,100,100" background="255,255,255" autoResize="false"/>
+                    <w4graph:line routerType="Rectilinear" closestRoute="false" avoidObstacleRoute="false" automaticRoute="true"/>
+                </w4graph:graphStyle>
+                <adonis:connector/>
+            </semantic:extensionElements>
+        </semantic:sequenceFlow>
+        <semantic:sequenceFlow id="sequenceFlow_178" sourceRef="assignApprover" targetRef="approveInvoice">
+            <semantic:extensionElements>
+                <signavio:signavioMetaData metaKey="schnittstelleab"/>
+                <w4graph:graphStyle>
+                    <w4graph:basic foreground="0,0,0" collapsed="false" borderColor="100,100,100" background="255,255,255" autoResize="false"/>
+                    <w4graph:line routerType="Rectilinear" closestRoute="false" avoidObstacleRoute="false" automaticRoute="true"/>
+                </w4graph:graphStyle>
+                <adonis:connector/>
+            </semantic:extensionElements>
+        </semantic:sequenceFlow>
+        <semantic:exclusiveGateway id="invoice_approved" name="Invoice approved?" gatewayDirection="Unspecified">
+            <semantic:extensionElements>
+                <signavio:signavioMetaData metaValue="#ffffff" metaKey="bgcolor"/>
+                <signavio:signavioMetaData metaKey="entscheidungstabelle"/>
+                <signavio:signavioMetaData metaKey="prfung"/>
+                <w4graph:graphStyle>
+                    <w4graph:basic foreground="0,0,0" collapsed="false" borderColor="100,100,100" background="185,139,0" autoResize="false"/>
+                </w4graph:graphStyle>
+                <adonis:instance/>
+            </semantic:extensionElements>
+            <semantic:incoming>sequenceFlow_180</semantic:incoming>
+            <semantic:outgoing>invoiceApproved</semantic:outgoing>
+            <semantic:outgoing>invoiceNotApproved</semantic:outgoing>
+        </semantic:exclusiveGateway>
+        <semantic:sequenceFlow id="invoiceApproved" name="yes" sourceRef="invoice_approved" targetRef="prepareBankTransfer">
+            <semantic:extensionElements>
+                <signavio:signavioMetaData metaKey="schnittstelleab"/>
+                <w4graph:graphStyle>
+                    <w4graph:basic foreground="0,0,0" collapsed="false" borderColor="100,100,100" background="255,255,255" autoResize="false"/>
+                    <w4graph:line routerType="Rectilinear" closestRoute="false" avoidObstacleRoute="false" automaticRoute="true"/>
+                </w4graph:graphStyle>
+                <adonis:connector/>
+            </semantic:extensionElements>
+            <semantic:conditionExpression xsi:type="semantic:tFormalExpression" id="invoiceApproved_condExpr">bpmn:getDataObject('approved')</semantic:conditionExpression>
+        </semantic:sequenceFlow>
+        <semantic:sequenceFlow id="invoiceNotApproved" name="no" sourceRef="invoice_approved" targetRef="reviewInvoice">
+            <semantic:extensionElements>
+                <signavio:signavioMetaData metaKey="schnittstelleab"/>
+                <w4graph:graphStyle>
+                    <w4graph:basic foreground="0,0,0" collapsed="false" borderColor="100,100,100" background="255,255,255" autoResize="false"/>
+                    <w4graph:line routerType="Rectilinear" closestRoute="false" avoidObstacleRoute="false" automaticRoute="true"/>
+                </w4graph:graphStyle>
+                <adonis:connector/>
+            </semantic:extensionElements>
+            <semantic:conditionExpression xsi:type="semantic:tFormalExpression" id="invoiceNotApproved_condExpr">not(bpmn:getDataObject('approved'))</semantic:conditionExpression>
+        </semantic:sequenceFlow>
+        <semantic:userTask id="assignApprover" name="Assign Approver" startQuantity="1" completionQuantity="1" isForCompensation="false" implementation="##unspecified" camunda:formKey="app:assignApprover.jsf" camunda:assignee="demo">
+            <semantic:extensionElements>
+                <signavio:signavioMetaData metaValue="#ffffcc" metaKey="bgcolor"/>
+                <signavio:signavioMetaData metaKey="meta-informed"/>
+                <signavio:signavioMetaData metaKey="meta-fhrtdurch"/>
+                <signavio:signavioMetaData metaKey="meta-prioritt"/>
+                <signavio:signavioMetaData metaKey="meta-iks"/>
+                <signavio:signavioMetaData metaKey="risklevel2"/>
+                <signavio:signavioMetaData metaKey="meta-wirdkonsultiert"/>
+                <signavio:signavioMetaData metaKey="meta-wirdinformiert"/>
+                <signavio:signavioMetaData metaKey="meta-responsible"/>
+                <signavio:signavioMetaData metaKey="meta-consulted"/>
+                <signavio:signavioMetaData metaKey="meta-erteiltfreigabe"/>
+                <signavio:signavioMetaData metaKey="externedokumente2"/>
+                <signavio:signavioMetaData metaKey="saprelevant"/>
+                <signavio:signavioMetaData metaKey="itsmpriority"/>
+                <signavio:signavioMetaData metaKey="meta-accountable"/>
+                <signavio:signavioMetaData metaKey="riskandcontrol"/>
+                <signavio:signavioMetaData metaKey="saptransaktionsnummer"/>
+                <signavio:signavioMetaData metaKey="externedokumente"/>
+                <signavio:signavioMetaData metaKey="itsysteme"/>
+                <w4graph:graphStyle>
+                    <w4graph:basic foreground="0,0,0" collapsed="false" borderColor="100,100,100" background="194,215,235" autoResize="false"/>
+                </w4graph:graphStyle>
+                <adonis:instance/>
+            </semantic:extensionElements>
+            <semantic:incoming>SequenceFlow_1</semantic:incoming>
+            <semantic:outgoing>sequenceFlow_178</semantic:outgoing>
+            <semantic:potentialOwner id="sid-e91c6d34-43bc-4ec9-bc1b-7fb95e344e8d">
+                <semantic:resourceRef>Bpmn_Resource_6vVHsLHzEeS1nbPdxxCzlg</semantic:resourceRef>
+            </semantic:potentialOwner>
+        </semantic:userTask>
+        <semantic:sequenceFlow id="SequenceFlow_1" sourceRef="StartEvent_1" targetRef="assignApprover">
+            <semantic:extensionElements>
+                <signavio:signavioMetaData metaKey="schnittstelleab"/>
+                <w4graph:graphStyle>
+                    <w4graph:basic foreground="0,0,0" collapsed="false" borderColor="100,100,100" background="255,255,255" autoResize="false"/>
+                    <w4graph:line routerType="Rectilinear" closestRoute="false" avoidObstacleRoute="false" automaticRoute="true"/>
+                </w4graph:graphStyle>
+                <adonis:connector/>
+            </semantic:extensionElements>
+        </semantic:sequenceFlow>
+        <semantic:userTask id="reviewInvoice" name="Rechnung klären" startQuantity="1" completionQuantity="1" isForCompensation="false" implementation="##unspecified" camunda:formKey="app:reviewInvoice.jsf" camunda:assignee="demo">
+            <semantic:extensionElements>
+                <signavio:signavioMetaData metaValue="#ffffcc" metaKey="bgcolor"/>
+                <signavio:signavioMetaData metaKey="meta-informed"/>
+                <signavio:signavioMetaData metaKey="meta-fhrtdurch"/>
+                <signavio:signavioMetaData metaKey="meta-prioritt"/>
+                <signavio:signavioMetaData metaKey="meta-iks"/>
+                <signavio:signavioMetaData metaKey="risklevel2"/>
+                <signavio:signavioMetaData metaKey="meta-wirdkonsultiert"/>
+                <signavio:signavioMetaData metaKey="meta-wirdinformiert"/>
+                <signavio:signavioMetaData metaKey="meta-responsible"/>
+                <signavio:signavioMetaData metaKey="meta-consulted"/>
+                <signavio:signavioMetaData metaKey="meta-erteiltfreigabe"/>
+                <signavio:signavioMetaData metaKey="externedokumente2"/>
+                <signavio:signavioMetaData metaKey="saprelevant"/>
+                <signavio:signavioMetaData metaKey="itsmpriority"/>
+                <signavio:signavioMetaData metaKey="meta-accountable"/>
+                <signavio:signavioMetaData metaKey="riskandcontrol"/>
+                <signavio:signavioMetaData metaKey="saptransaktionsnummer"/>
+                <signavio:signavioMetaData metaKey="externedokumente"/>
+                <signavio:signavioMetaData metaKey="itsysteme"/>
+                <w4graph:graphStyle>
+                    <w4graph:basic foreground="0,0,0" collapsed="false" borderColor="100,100,100" background="194,215,235" autoResize="false"/>
+                </w4graph:graphStyle>
+                <adonis:instance/>
+            </semantic:extensionElements>
+            <semantic:incoming>invoiceNotApproved</semantic:incoming>
+            <semantic:outgoing>sequenceFlow_183</semantic:outgoing>
+            <semantic:ioSpecification id="sid-30a69c80-6b09-466a-9e75-b805536abba9">
+                <semantic:dataOutput isCollection="false" itemSubjectRef="xsdString" name="clarified" id="Bpmn_DataOutput_dCG-8LH1EeSuDf0W70XLGw"/>
+                <semantic:inputSet name="default input set" id="Bpmn_InputSet_dB6xtbH1EeSuDf0W70XLGw">
+                    <semantic:outputSetRefs>Bpmn_OutputSet_dB6xtLH1EeSuDf0W70XLGw</semantic:outputSetRefs>
+                </semantic:inputSet>
+                <semantic:outputSet name="default output set" id="Bpmn_OutputSet_dB6xtLH1EeSuDf0W70XLGw">
+                    <semantic:dataOutputRefs>Bpmn_DataOutput_dCG-8LH1EeSuDf0W70XLGw</semantic:dataOutputRefs>
+                    <semantic:inputSetRefs>Bpmn_InputSet_dB6xtbH1EeSuDf0W70XLGw</semantic:inputSetRefs>
+                </semantic:outputSet>
+            </semantic:ioSpecification>
+            <semantic:dataOutputAssociation id="Bpmn_DataOutputAssociation_dB6xsrH1EeSuDf0W70XLGw">
+                <semantic:sourceRef>Bpmn_DataOutput_dCG-8LH1EeSuDf0W70XLGw</semantic:sourceRef>
+                <semantic:targetRef>Bpmn_DataObjectReference_cdsDQLH1EeSuDf0W70XLGw</semantic:targetRef>
+            </semantic:dataOutputAssociation>
+            <semantic:potentialOwner id="sid-b7c28a01-ba48-4603-a026-a5df34d0ca16">
+                <semantic:resourceRef>Bpmn_Resource_6vVHsLHzEeS1nbPdxxCzlg</semantic:resourceRef>
+            </semantic:potentialOwner>
+        </semantic:userTask>
+        <semantic:sequenceFlow id="sequenceFlow_183" sourceRef="reviewInvoice" targetRef="reviewSuccessful_gw">
+            <semantic:extensionElements>
+                <signavio:signavioMetaData metaKey="schnittstelleab"/>
+                <w4graph:graphStyle>
+                    <w4graph:basic foreground="0,0,0" collapsed="false" borderColor="100,100,100" background="255,255,255" autoResize="false"/>
+                    <w4graph:line routerType="Rectilinear" closestRoute="false" avoidObstacleRoute="false" automaticRoute="true"/>
+                </w4graph:graphStyle>
+                <adonis:connector/>
+            </semantic:extensionElements>
+        </semantic:sequenceFlow>
+        <semantic:exclusiveGateway id="reviewSuccessful_gw" name="Review successful?" gatewayDirection="Unspecified">
+            <semantic:extensionElements>
+                <signavio:signavioMetaData metaValue="#ffffff" metaKey="bgcolor"/>
+                <signavio:signavioMetaData metaKey="entscheidungstabelle"/>
+                <signavio:signavioMetaData metaKey="prfung"/>
+                <w4graph:graphStyle>
+                    <w4graph:basic foreground="0,0,0" collapsed="false" borderColor="100,100,100" background="185,139,0" autoResize="false"/>
+                </w4graph:graphStyle>
+                <adonis:instance/>
+            </semantic:extensionElements>
+            <semantic:incoming>sequenceFlow_183</semantic:incoming>
+            <semantic:outgoing>reviewSuccessful</semantic:outgoing>
+            <semantic:outgoing>reviewNotSuccessful</semantic:outgoing>
+        </semantic:exclusiveGateway>
+        <semantic:sequenceFlow id="reviewNotSuccessful" name="no" sourceRef="reviewSuccessful_gw" targetRef="invoiceNotProcessed">
+            <semantic:extensionElements>
+                <signavio:signavioMetaData metaKey="schnittstelleab"/>
+                <w4graph:graphStyle>
+                    <w4graph:basic foreground="0,0,0" collapsed="false" borderColor="100,100,100" background="255,255,255" autoResize="false"/>
+                    <w4graph:line routerType="Rectilinear" closestRoute="false" avoidObstacleRoute="false" automaticRoute="true"/>
+                </w4graph:graphStyle>
+                <adonis:connector/>
+            </semantic:extensionElements>
+            <semantic:conditionExpression xsi:type="semantic:tFormalExpression" id="reviewNotSuccessful_condExpr">bpmn:getDataObject('clarified') = 'no'</semantic:conditionExpression>
+        </semantic:sequenceFlow>
+        <semantic:endEvent id="invoiceNotProcessed" name="Invoice not processed">
+            <semantic:extensionElements>
+                <signavio:signavioMetaData metaValue="#ffffff" metaKey="bgcolor"/>
+                <signavio:signavioMetaData metaKey="followingprocessdiagrams"/>
+                <signavio:signavioMetaData metaKey="followingprocesses"/>
+                <signavio:signavioMetaData metaKey="nachfolgerprozesse"/>
+                <signavio:signavioMetaData metaKey="folgeprozesse"/>
+                <signavio:signavioMetaData metaKey="itsysteme"/>
+                <w4graph:graphStyle>
+                    <w4graph:basic foreground="0,0,0" collapsed="false" borderColor="100,100,100" background="190,0,0" autoResize="false"/>
+                </w4graph:graphStyle>
+                <adonis:instance/>
+            </semantic:extensionElements>
+            <semantic:incoming>reviewNotSuccessful</semantic:incoming>
+            <semantic:inputSet/>
+        </semantic:endEvent>
+        <semantic:startEvent id="StartEvent_1" name="Invoice received" camunda:formKey="app:startProcess.jsf">
+            <semantic:extensionElements>
+                <signavio:signavioMetaData metaValue="#ffffff" metaKey="bgcolor"/>
+                <signavio:signavioMetaData metaKey="vorgngerprozesse"/>
+                <signavio:signavioMetaData metaKey="inputprocessdiagrams"/>
+                <signavio:signavioMetaData metaKey="preceedingprocesses"/>
+                <signavio:signavioMetaData metaKey="itsysteme"/>
+                <w4graph:graphStyle>
+                    <w4graph:basic foreground="0,0,0" collapsed="false" borderColor="100,100,100" background="109,183,0" autoResize="false"/>
+                </w4graph:graphStyle>
+                <adonis:instance/>
+            </semantic:extensionElements>
+            <semantic:outgoing>SequenceFlow_1</semantic:outgoing>
+        </semantic:startEvent>
+        <semantic:userTask id="prepareBankTransfer" name="Prepare Bank Transfer" startQuantity="1" completionQuantity="1" isForCompensation="false" implementation="##unspecified" camunda:formKey="app:prepareBankTransfer.jsf" camunda:candidateGroups="accounting">
+            <semantic:extensionElements>
+                <signavio:signavioMetaData metaValue="#ffffcc" metaKey="bgcolor"/>
+                <signavio:signavioMetaData metaKey="meta-informed"/>
+                <signavio:signavioMetaData metaKey="meta-fhrtdurch"/>
+                <signavio:signavioMetaData metaKey="meta-prioritt"/>
+                <signavio:signavioMetaData metaKey="meta-iks"/>
+                <signavio:signavioMetaData metaKey="risklevel2"/>
+                <signavio:signavioMetaData metaKey="meta-wirdkonsultiert"/>
+                <signavio:signavioMetaData metaKey="meta-wirdinformiert"/>
+                <signavio:signavioMetaData metaKey="meta-responsible"/>
+                <signavio:signavioMetaData metaKey="meta-consulted"/>
+                <signavio:signavioMetaData metaKey="meta-erteiltfreigabe"/>
+                <signavio:signavioMetaData metaKey="externedokumente2"/>
+                <signavio:signavioMetaData metaKey="saprelevant"/>
+                <signavio:signavioMetaData metaKey="itsmpriority"/>
+                <signavio:signavioMetaData metaKey="meta-accountable"/>
+                <signavio:signavioMetaData metaKey="riskandcontrol"/>
+                <signavio:signavioMetaData metaKey="saptransaktionsnummer"/>
+                <signavio:signavioMetaData metaKey="externedokumente"/>
+                <signavio:signavioMetaData metaKey="itsysteme"/>
+                <w4graph:graphStyle>
+                    <w4graph:basic foreground="0,0,0" collapsed="false" borderColor="100,100,100" background="194,215,235" autoResize="false"/>
+                </w4graph:graphStyle>
+                <adonis:instance/>
+            </semantic:extensionElements>
+            <semantic:incoming>invoiceApproved</semantic:incoming>
+            <semantic:outgoing>SequenceFlow_2</semantic:outgoing>
+            <semantic:potentialOwner id="sid-7b050434-ea3a-4fb0-a949-e81713c5cacc">
+                <semantic:resourceRef>Bpmn_Resource_-IajYLHzEeS1nbPdxxCzlg</semantic:resourceRef>
+            </semantic:potentialOwner>
+        </semantic:userTask>
+        <semantic:sequenceFlow id="SequenceFlow_2" sourceRef="prepareBankTransfer" targetRef="archiveInvoice">
+            <semantic:extensionElements>
+                <signavio:signavioMetaData metaKey="schnittstelleab"/>
+                <w4graph:graphStyle>
+                    <w4graph:basic foreground="0,0,0" collapsed="false" borderColor="100,100,100" background="255,255,255" autoResize="false"/>
+                    <w4graph:line routerType="Rectilinear" closestRoute="false" avoidObstacleRoute="false" automaticRoute="true"/>
+                </w4graph:graphStyle>
+                <adonis:connector/>
+            </semantic:extensionElements>
+        </semantic:sequenceFlow>
+        <semantic:endEvent id="invoiceProcessed" name="Invoice processed">
+            <semantic:extensionElements>
+                <signavio:signavioMetaData metaValue="#ffffff" metaKey="bgcolor"/>
+                <signavio:signavioMetaData metaKey="followingprocessdiagrams"/>
+                <signavio:signavioMetaData metaKey="followingprocesses"/>
+                <signavio:signavioMetaData metaKey="nachfolgerprozesse"/>
+                <signavio:signavioMetaData metaKey="folgeprozesse"/>
+                <signavio:signavioMetaData metaKey="itsysteme"/>
+                <w4graph:graphStyle>
+                    <w4graph:basic foreground="0,0,0" collapsed="false" borderColor="100,100,100" background="190,0,0" autoResize="false"/>
+                </w4graph:graphStyle>
+                <adonis:instance/>
+            </semantic:extensionElements>
+            <semantic:incoming>SequenceFlow_3</semantic:incoming>
+            <semantic:inputSet/>
+        </semantic:endEvent>
+        <semantic:sequenceFlow id="SequenceFlow_3" sourceRef="archiveInvoice" targetRef="invoiceProcessed">
+            <semantic:extensionElements>
+                <signavio:signavioMetaData metaKey="schnittstelleab"/>
+                <w4graph:graphStyle>
+                    <w4graph:basic foreground="0,0,0" collapsed="false" borderColor="100,100,100" background="255,255,255" autoResize="false"/>
+                    <w4graph:line routerType="Rectilinear" closestRoute="false" avoidObstacleRoute="false" automaticRoute="true"/>
+                </w4graph:graphStyle>
+                <adonis:connector/>
+            </semantic:extensionElements>
+        </semantic:sequenceFlow>
+        <semantic:serviceTask id="archiveInvoice" name=" Archive Invoice" startQuantity="1" completionQuantity="1" isForCompensation="false" implementation="##WebService" camunda:delegateExpression="#{archiveService}" w4:serviceName="ArchiveInvoiceService">
+            <semantic:extensionElements>
+                <signavio:signavioMetaData metaValue="#ffffcc" metaKey="bgcolor"/>
+                <signavio:signavioMetaData metaKey="meta-informed"/>
+                <signavio:signavioMetaData metaKey="meta-fhrtdurch"/>
+                <signavio:signavioMetaData metaKey="meta-prioritt"/>
+                <signavio:signavioMetaData metaKey="meta-iks"/>
+                <signavio:signavioMetaData metaKey="risklevel2"/>
+                <signavio:signavioMetaData metaKey="meta-wirdkonsultiert"/>
+                <signavio:signavioMetaData metaKey="meta-wirdinformiert"/>
+                <signavio:signavioMetaData metaKey="meta-responsible"/>
+                <signavio:signavioMetaData metaKey="meta-consulted"/>
+                <signavio:signavioMetaData metaKey="meta-erteiltfreigabe"/>
+                <signavio:signavioMetaData metaKey="externedokumente2"/>
+                <signavio:signavioMetaData metaKey="saprelevant"/>
+                <signavio:signavioMetaData metaKey="itsmpriority"/>
+                <signavio:signavioMetaData metaKey="meta-accountable"/>
+                <signavio:signavioMetaData metaKey="riskandcontrol"/>
+                <signavio:signavioMetaData metaKey="saptransaktionsnummer"/>
+                <signavio:signavioMetaData metaKey="externedokumente"/>
+                <signavio:signavioMetaData metaKey="itsysteme"/>
+                <camunda:field stringValue="Hello World" name="text0"/>
+                <camunda:field name="text1">
+                    <camunda:expression>${genderBean.getGenderString(gender)}</camunda:expression>
+                </camunda:field>
+                <camunda:field name="text2">
+                    <camunda:expression/>
+                </camunda:field>
+                <camunda:field name="text3">
+                    <camunda:string>Hello World</camunda:string>
+                </camunda:field>
+                <camunda:field name="text4">
+                    <camunda:string>&lt;p&gt;Hello World&lt;/p&gt;&lt;br&gt;</camunda:string>
+                </camunda:field>
+                <w4graph:graphStyle>
+                    <w4graph:basic foreground="0,0,0" collapsed="false" borderColor="100,100,100" background="194,215,235" autoResize="false"/>
+                </w4graph:graphStyle>
+                <adonis:instance/>
+            </semantic:extensionElements>
+            <semantic:incoming>SequenceFlow_2</semantic:incoming>
+            <semantic:outgoing>SequenceFlow_3</semantic:outgoing>
+        </semantic:serviceTask>
+        <semantic:dataObjectReference id="Bpmn_DataObjectReference_YGA4YLH1EeSuDf0W70XLGw" name="approved" dataObjectRef="sid-1937ea46-7a9a-457f-b610-d1cfaea752b2">
+            <semantic:extensionElements>
+                <signavio:signavioMetaData metaValue="#ffffff" metaKey="bgcolor"/>
+                <signavio:signavioMetaData metaKey="mandatoryrecord"/>
+                <signavio:signavioMetaData metaKey="formular"/>
+                <signavio:signavioMetaData metaKey="documents"/>
+                <signavio:signavioMetaData metaKey="art"/>
+                <signavio:signavioMetaData metaKey="datamapping"/>
+                <signavio:signavioMetaData metaKey="spezifikationsdokumente"/>
+                <signavio:signavioMetaData metaKey="externedokumente"/>
+                <w4graph:graphStyle>
+                    <w4graph:basic foreground="0,0,0" collapsed="false" borderColor="100,100,100" background="153,153,153" autoResize="false"/>
+                </w4graph:graphStyle>
+                <adonis:instance/>
+            </semantic:extensionElements>
+            <semantic:dataState/>
+        </semantic:dataObjectReference>
+        <semantic:dataObjectReference id="Bpmn_DataObjectReference_cdsDQLH1EeSuDf0W70XLGw" name="clarified" dataObjectRef="sid-1fae61e0-2385-457b-9760-c84ef8cbf310">
+            <semantic:extensionElements>
+                <signavio:signavioMetaData metaValue="#ffffff" metaKey="bgcolor"/>
+                <signavio:signavioMetaData metaKey="mandatoryrecord"/>
+                <signavio:signavioMetaData metaKey="formular"/>
+                <signavio:signavioMetaData metaKey="documents"/>
+                <signavio:signavioMetaData metaKey="art"/>
+                <signavio:signavioMetaData metaKey="datamapping"/>
+                <signavio:signavioMetaData metaKey="spezifikationsdokumente"/>
+                <signavio:signavioMetaData metaKey="externedokumente"/>
+                <w4graph:graphStyle>
+                    <w4graph:basic foreground="0,0,0" collapsed="false" borderColor="100,100,100" background="153,153,153" autoResize="false"/>
+                </w4graph:graphStyle>
+                <adonis:instance/>
+            </semantic:extensionElements>
+            <semantic:dataState/>
+        </semantic:dataObjectReference>
+    </semantic:process>
+    <bpmndi:BPMNDiagram id="sid-05e983e6-7699-4337-aef0-6de8fa6a6903" name="Invoice Handling (OMG BPMN MIWG Demo)" documentation="">
+        <bpmndi:BPMNPlane bpmnElement="handle-invoice" id="sid-05e983e6-7699-4337-aef0-6de8fa6a6903_plane" trisobpmn:diagramWidth="1485" trisobpmn:diagramHeight="1050">
+            <bpmndi:BPMNShape id="BPMN_Shape_approveInvoice" bpmnElement="approveInvoice" color:background-color="#ffffff" color:border-color="#000000">
+                <dc:Bounds x="350" y="225" width="105" height="80"/>
+                <bpmndi:BPMNLabel color:color="#000000" labelStyle="LSsid-05e983e6-7699-4337-aef0-6de8fa6a6903" trisobpmn:defaultBounds="true">
+                    <dc:Bounds height="12" width="105" x="350" y="259"/>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNEdge id="BPMN_Edge_reviewSuccessful" bpmnElement="reviewSuccessful" color:border-color="#000000">
+                <di:waypoint x="713" y="65"/>
+                <di:waypoint x="713" y="35"/>
+                <di:waypoint x="403" y="35"/>
+                <di:waypoint x="403" y="225"/>
+                <bpmndi:BPMNLabel color:color="#000000" labelStyle="LSsid-05e983e6-7699-4337-aef0-6de8fa6a6903" trisobpmn:defaultBounds="true">
+                    <dc:Bounds height="12" width="310" x="403" y="40"/>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge id="BPMN_Edge_sequenceFlow_180" bpmnElement="sequenceFlow_180" color:border-color="#000000">
+                <di:waypoint x="455" y="265"/>
+                <di:waypoint x="482" y="265"/>
+                <bpmndi:BPMNLabel color:color="#000000" labelStyle="LSsid-05e983e6-7699-4337-aef0-6de8fa6a6903"/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge id="BPMN_Edge_sequenceFlow_178" bpmnElement="sequenceFlow_178" color:border-color="#000000">
+                <di:waypoint x="282" y="92"/>
+                <di:waypoint x="310" y="92"/>
+                <di:waypoint x="310" y="265"/>
+                <di:waypoint x="350" y="265"/>
+                <bpmndi:BPMNLabel color:color="#000000" labelStyle="LSsid-05e983e6-7699-4337-aef0-6de8fa6a6903"/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNShape id="BPMN_Shape_invoice_approved" bpmnElement="invoice_approved" isMarkerVisible="true" color:background-color="#ffffff" color:border-color="#000000">
+                <dc:Bounds x="482" y="239" width="53" height="53"/>
+                <bpmndi:BPMNLabel color:color="#000000" labelStyle="LSsid-05e983e6-7699-4337-aef0-6de8fa6a6903" trisobpmn:defaultBounds="true">
+                    <dc:Bounds height="12.015625" width="110" x="453.77180190466964" y="300.97087650121966"/>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNEdge id="BPMN_Edge_invoiceApproved" bpmnElement="invoiceApproved" color:border-color="#000000">
+                <di:waypoint x="535" y="265"/>
+                <di:waypoint x="587" y="265"/>
+                <di:waypoint x="587" y="425"/>
+                <di:waypoint x="635" y="425"/>
+                <bpmndi:BPMNLabel color:color="#000000" labelStyle="LSsid-05e983e6-7699-4337-aef0-6de8fa6a6903" trisobpmn:defaultBounds="true">
+                    <dc:Bounds height="12" width="180" x="497" y="350"/>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge id="BPMN_Edge_invoiceNotApproved" bpmnElement="invoiceNotApproved" color:border-color="#000000">
+                <di:waypoint x="508" y="239"/>
+                <di:waypoint x="508" y="92"/>
+                <di:waypoint x="548" y="92"/>
+                <bpmndi:BPMNLabel color:color="#000000" labelStyle="LSsid-05e983e6-7699-4337-aef0-6de8fa6a6903" trisobpmn:defaultBounds="true">
+                    <dc:Bounds height="12" width="110" x="453" y="97"/>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNShape id="BPMN_Shape_assignApprover" bpmnElement="assignApprover" color:background-color="#ffffff" color:border-color="#000000">
+                <dc:Bounds x="177" y="52" width="105" height="80"/>
+                <bpmndi:BPMNLabel color:color="#000000" labelStyle="LSsid-05e983e6-7699-4337-aef0-6de8fa6a6903" trisobpmn:defaultBounds="true">
+                    <dc:Bounds height="12" width="105" x="177" y="86"/>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNEdge id="BPMN_Edge_SequenceFlow_1" bpmnElement="SequenceFlow_1" color:border-color="#000000">
+                <di:waypoint x="137" y="92"/>
+                <di:waypoint x="177" y="92"/>
+                <bpmndi:BPMNLabel color:color="#000000" labelStyle="LSsid-05e983e6-7699-4337-aef0-6de8fa6a6903"/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNShape id="BPMN_Shape_reviewInvoice" bpmnElement="reviewInvoice" color:background-color="#ffffff" color:border-color="#000000">
+                <dc:Bounds x="548" y="52" width="100" height="80"/>
+                <bpmndi:BPMNLabel color:color="#000000" labelStyle="LSsid-05e983e6-7699-4337-aef0-6de8fa6a6903" trisobpmn:defaultBounds="true">
+                    <dc:Bounds height="12" width="100" x="548" y="86"/>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNEdge id="BPMN_Edge_sequenceFlow_183" bpmnElement="sequenceFlow_183" color:border-color="#000000">
+                <di:waypoint x="648" y="92"/>
+                <di:waypoint x="686" y="92"/>
+                <bpmndi:BPMNLabel color:color="#000000" labelStyle="LSsid-05e983e6-7699-4337-aef0-6de8fa6a6903"/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNShape id="BPMN_Shape_reviewSuccessful_gw" bpmnElement="reviewSuccessful_gw" isMarkerVisible="true" color:background-color="#ffffff" color:border-color="#000000">
+                <dc:Bounds x="686" y="65" width="53" height="53"/>
+                <bpmndi:BPMNLabel color:color="#000000" labelStyle="LSsid-05e983e6-7699-4337-aef0-6de8fa6a6903" trisobpmn:defaultBounds="true">
+                    <dc:Bounds height="12.015625" width="110" x="657.7718019046696" y="126.97087650121969"/>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNEdge id="BPMN_Edge_reviewNotSuccessful" bpmnElement="reviewNotSuccessful" color:border-color="#000000">
+                <di:waypoint x="739" y="91"/>
+                <di:waypoint x="912" y="91"/>
+                <bpmndi:BPMNLabel color:color="#000000" labelStyle="LSsid-05e983e6-7699-4337-aef0-6de8fa6a6903" trisobpmn:defaultBounds="true">
+                    <dc:Bounds height="12" width="226" x="713" y="96"/>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNShape id="BPMN_Shape_invoiceNotProcessed" bpmnElement="invoiceNotProcessed" color:background-color="#ffffff" color:border-color="#000000">
+                <dc:Bounds x="912" y="65" width="53" height="53"/>
+                <bpmndi:BPMNLabel color:color="#000000" labelStyle="LSsid-05e983e6-7699-4337-aef0-6de8fa6a6903" trisobpmn:defaultBounds="true">
+                    <dc:Bounds height="12.015625" width="110" x="883.5" y="132.72222222222223"/>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape id="BPMN_Shape_StartEvent_1" bpmnElement="StartEvent_1" color:background-color="#ffffff" color:border-color="#000000">
+                <dc:Bounds x="84" y="65" width="53" height="53"/>
+                <bpmndi:BPMNLabel color:color="#000000" labelStyle="LSsid-05e983e6-7699-4337-aef0-6de8fa6a6903" trisobpmn:defaultBounds="true">
+                    <dc:Bounds height="12" width="110" x="55.5" y="134.5625"/>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape id="BPMN_Shape_prepareBankTransfer" bpmnElement="prepareBankTransfer" color:background-color="#ffffff" color:border-color="#000000">
+                <dc:Bounds x="635" y="385" width="105" height="80"/>
+                <bpmndi:BPMNLabel color:color="#000000" labelStyle="LSsid-05e983e6-7699-4337-aef0-6de8fa6a6903" trisobpmn:defaultBounds="true">
+                    <dc:Bounds height="26" width="105" x="635" y="412"/>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNEdge id="BPMN_Edge_SequenceFlow_2" bpmnElement="SequenceFlow_2" color:border-color="#000000">
+                <di:waypoint x="740" y="425"/>
+                <di:waypoint x="777" y="425"/>
+                <bpmndi:BPMNLabel color:color="#000000" labelStyle="LSsid-05e983e6-7699-4337-aef0-6de8fa6a6903"/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNShape id="BPMN_Shape_invoiceProcessed" bpmnElement="invoiceProcessed" color:background-color="#ffffff" color:border-color="#000000">
+                <dc:Bounds x="912" y="398" width="53" height="53"/>
+                <bpmndi:BPMNLabel color:color="#000000" labelStyle="LSsid-05e983e6-7699-4337-aef0-6de8fa6a6903" trisobpmn:defaultBounds="true">
+                    <dc:Bounds height="12.015625" width="110" x="883.5" y="465.72222222222223"/>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNEdge id="BPMN_Edge_SequenceFlow_3" bpmnElement="SequenceFlow_3" color:border-color="#000000">
+                <di:waypoint x="882" y="424"/>
+                <di:waypoint x="912" y="424"/>
+                <bpmndi:BPMNLabel color:color="#000000" labelStyle="LSsid-05e983e6-7699-4337-aef0-6de8fa6a6903"/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNShape id="BPMN_Shape_archiveInvoice" bpmnElement="archiveInvoice" color:background-color="#ffffff" color:border-color="#000000">
+                <dc:Bounds x="777" y="385" width="105" height="80"/>
+                <bpmndi:BPMNLabel color:color="#000000" labelStyle="LSsid-05e983e6-7699-4337-aef0-6de8fa6a6903" trisobpmn:defaultBounds="true">
+                    <dc:Bounds height="12" width="105" x="777" y="419"/>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape id="BPMN_Shape_Bpmn_DataObjectReference_YGA4YLH1EeSuDf0W70XLGw" bpmnElement="Bpmn_DataObjectReference_YGA4YLH1EeSuDf0W70XLGw" color:background-color="#ffffff" color:border-color="#000000">
+                <dc:Bounds x="225" y="267" width="45" height="53"/>
+                <bpmndi:BPMNLabel color:color="#000000" labelStyle="LSsid-05e983e6-7699-4337-aef0-6de8fa6a6903" trisobpmn:defaultBounds="true">
+                    <dc:Bounds height="12" width="110" x="192.5" y="326.625"/>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape id="BPMN_Shape_Bpmn_DataObjectReference_cdsDQLH1EeSuDf0W70XLGw" bpmnElement="Bpmn_DataObjectReference_cdsDQLH1EeSuDf0W70XLGw" color:background-color="#ffffff" color:border-color="#000000">
+                <dc:Bounds x="437" y="45" width="45" height="53"/>
+                <bpmndi:BPMNLabel color:color="#000000" labelStyle="LSsid-05e983e6-7699-4337-aef0-6de8fa6a6903" trisobpmn:defaultBounds="true">
+                    <dc:Bounds height="12" width="110" x="404.5" y="104.625"/>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNEdge id="BPMN_Edge_Bpmn_DataOutputAssociation_Y55MYrH1EeSuDf0W70XLGw" bpmnElement="Bpmn_DataOutputAssociation_Y55MYrH1EeSuDf0W70XLGw" color:border-color="#000000" sourceElement="BPMN_Shape_approveInvoice">
+                <di:waypoint x="350" y="293"/>
+                <di:waypoint x="270" y="293"/>
+                <bpmndi:BPMNLabel color:color="#000000" labelStyle="LSsid-05e983e6-7699-4337-aef0-6de8fa6a6903"/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge id="BPMN_Edge_Bpmn_DataOutputAssociation_dB6xsrH1EeSuDf0W70XLGw" bpmnElement="Bpmn_DataOutputAssociation_dB6xsrH1EeSuDf0W70XLGw" color:border-color="#000000" sourceElement="BPMN_Shape_reviewInvoice">
+                <di:waypoint x="548" y="71"/>
+                <di:waypoint x="482" y="71"/>
+                <bpmndi:BPMNLabel color:color="#000000" labelStyle="LSsid-05e983e6-7699-4337-aef0-6de8fa6a6903"/>
+            </bpmndi:BPMNEdge>
+        </bpmndi:BPMNPlane>
+        <bpmndi:BPMNLabelStyle id="LSsid-05e983e6-7699-4337-aef0-6de8fa6a6903">
+            <dc:Font isBold="false" isItalic="false" isStrikeThrough="false" isUnderline="false" name="Arial" size="8"/>
+        </bpmndi:BPMNLabelStyle>
+    </bpmndi:BPMNDiagram>
+    <semantic:relationship type="ActivityStream">
+        <semantic:extensionElements>
+            <rss
+                xmlns="http://purl.org/rss/2.0/"
+                xmlns:trisofeed="http://trisotech.com/feed" version="2.0">
+                <channel/>
+            </rss>
+        </semantic:extensionElements>
+        <semantic:source>sid-bdb880ac-c464-4e5c-aa56-569d709436e0</semantic:source>
+        <semantic:target>sid-bdb880ac-c464-4e5c-aa56-569d709436e0</semantic:target>
+    </semantic:relationship>
+</semantic:definitions>
